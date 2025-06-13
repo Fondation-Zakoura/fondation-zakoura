@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#" target="_blank"><img src="img.png" width="400" alt="Fondation-Zakoura"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -7,55 +7,51 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Fondation Zakoura
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Reconnue d'utilité pubLique, La Fondation Zakoura oeuvre depuis plus de 25 ans en faveur du
+déveLoppement humain par Le biais de L'éducation des élèves, La formation des jeunes et
+L'autonomisation des femmes en milieu ruraL. Etle a ainsi déveLoppé une expertise unique dans e
+dépLoiement de projets socio-éducatifs è destination des popuLations en milieu ruraL et bénéficie de
+L'appui et du soutien de partenaires nationaux et internationaux.
+Depuis 1997, les actions de La Fondation Zakoura ont compté plus de 678 364 bénéficiaires directs et
+pour accompagner cette dynamique, des miLLiers de ressources ont été formées. En tant que force de
+proposition et afin d'accompagner au mieux l'impératif de la transformation du paysage éducatif au
+Maroc, ta Fondation agit è travers une offre compLète incluant te dépLoiement, La formation, Le pilotage et
+Le conseiL.
+La Fondation articuLe sa mission autour de trois piliers stratégiques:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- L'éducation dès 4 ans (préscolaire, remédiation scolaire, ENF cLassique et numérique;
+  coLLège nouveLle génération) .
+- L'empLoyabilité et L'empowerment è travers des programmes de formation et d'insertion .
+-  Le renforcement de L'écosystème de La Fondation.
+- ...
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+##  Documentation technique: 
+### ✅ Pré-requis
 
-## Learning Laravel
+- PHP >= 8.2
+- Composer
+- MariaDB > =10.4 (MariaDB est plus performant que MySQL et entièrement 100% open source.)
+- Node.js & npm (pour la partie front ou assets)
+- Laravel CLI (`composer global require laravel/installer`)
+- .....
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 🚀 Fonctionnalités
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Authentification API via JWT
+- Gestion des utilisateurs
+- Séparation des routes API/web
+- Gestion centralisée des exceptions
+- Configuration `.env` propre et modulaire
+- ...
 
-## Laravel Sponsors
+## ⚙️ Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Cloner le dépôt :
+   ```bash
+   git clone https://github.com/Fondation-Zakoura/fondation-zakoura
+   cd fondation-zakoura
+2. Composer install
+3. ....
