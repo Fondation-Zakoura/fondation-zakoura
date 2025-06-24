@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->string('logo_partenaire')->nullable(); // Chemin vers le fichier
             $table->foreignId('cree_par_id')->constrained('users'); // L'utilisateur qui l'a créé
+            $table->boolean('is_active')->default(true);
             $table->timestamps(); // Gère date_de_creation
         });
     }

@@ -28,25 +28,10 @@ Route::middleware('auth:api')->group(function () {
     });
     Route::post('/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
     Route::post('/reset', [ResetPasswordController::class, 'reset']);
-
-     Route::get('options/natures-partenaires', [OptionsController::class, 'natures']);
-    Route::get('options/structures-partenaires', [OptionsController::class, 'structures']);
-    Route::get('options/statuts-partenaires', [OptionsController::class, 'statuts']);
-
-     Route::apiResource('natures-partenaires', NaturePartenaireController::class);
+    Route::apiResource('natures-partenaires', NaturePartenaireController::class);
     Route::apiResource('structures-partenaires', StructurePartenaireController::class);
     Route::apiResource('statuts-partenaires', StatutPartenaireController::class);
-     Route::delete('partenaires', [PartenaireController::class, 'bulkDelete']);
+    Route::post('partenaires/bulk-delete', [PartenaireController::class, 'bulkDelete']);
 
-    // Routes CRUD classiques pour les partenaires
-});
-
- Route::get('options/natures-partenaires', [OptionsController::class, 'natures']);
-    Route::get('options/structures-partenaires', [OptionsController::class, 'structures']);
-    Route::get('options/statuts-partenaires', [OptionsController::class, 'statuts']);
-
-     Route::apiResource('natures-partenaires', NaturePartenaireController::class);
-    Route::apiResource('structures-partenaires', StructurePartenaireController::class);
-    Route::apiResource('statuts-partenaires', StatutPartenaireController::class);
-     Route::delete('partenaires', [PartenaireController::class, 'bulkDelete']);
     Route::apiResource('partenaires', PartenaireController::class);
+});

@@ -7,19 +7,27 @@ use App\Http\Requests\StoreNaturePartenaireRequest;
 use App\Http\Requests\UpdateNaturePartenaireRequest;
 use App\Http\Resources\NaturePartenaireResource;
 use App\Models\NaturePartenaire;
+use App\Services\NaturePartenaireService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class NaturePartenaireController extends Controller
 {
+    protected NaturePartenaireService $service;
+
+    public function __construct(NaturePartenaireService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index(): AnonymousResourceCollection
     {
-        return NaturePartenaireResource::collection(NaturePartenaire::all());
+        return NaturePartenaireResource::collection($this->service->all());
     }
 
     public function store(StoreNaturePartenaireRequest $request): NaturePartenaireResource
     {
-        $nature = NaturePartenaire::create($request->validated());
+        $nature = $this->service->store($request->validated());
         return new NaturePartenaireResource($nature);
     }
 
@@ -30,21 +38,17 @@ class NaturePartenaireController extends Controller
 
     public function update(UpdateNaturePartenaireRequest $request, NaturePartenaire $natures_partenaire): NaturePartenaireResource
     {
-        $natures_partenaire->update($request->validated());
+        $this->service->update($natures_partenaire, $request->validated());
         return new NaturePartenaireResource($natures_partenaire);
     }
 
     public function destroy(NaturePartenaire $natures_partenaire): JsonResponse
     {
-        // Règle de sécurité : vérifier si l'option est utilisée
-        if ($natures_partenaire->partenaires()->exists()) {
+        if (!$this->service->delete($natures_partenaire)) {
             return response()->json([
                 'message' => 'Cette nature est utilisée et ne peut pas être supprimée.'
-            ], 409); // 409 Conflict
+            ], 409);
         }
-
-        $natures_partenaire->delete();
-
-        return response()->json(null, 204); // No Content
+        return response()->json(null, 204);
     }
 }

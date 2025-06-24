@@ -16,7 +16,15 @@ class PersonneContact extends Model
      */
     protected $table = 'personnes_contact'; // Ajoutez cette ligne
 
-    protected $fillable = ['partenaire_id', 'nom', 'prenom', 'poste', 'email', 'telephone'];
+    protected $fillable = [
+        'partenaire_id',
+        'nom',
+        'prenom',
+        'poste',
+        'email',
+        'telephone',
+        'adresse',
+    ];
 
     public function partenaire()
     {

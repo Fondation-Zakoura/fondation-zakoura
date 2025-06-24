@@ -42,12 +42,15 @@ class StorePartenaireRequest extends FormRequest
             'structure_partenaire_id' => 'required|exists:structure_partenaires,id', // 
             'statut_id' => 'required|exists:statut_partenaires,id', // 
 
+            // 'cree_par_id' => 'required|exists:users,id',
+
             // --- Champs pour la création de la Personne de Contact associée ---
             'contact_nom' => 'required|string|max:255', // 
             'contact_prenom' => 'required|string|max:255', // 
             'contact_poste' => 'required|string|max:255', // 
             'contact_email' => 'required|email|max:255|unique:personnes_contact,email', // 
             'contact_telephone' => 'required|string|max:30', // 
+            'contact_adresse' => 'nullable|string|max:255', //
         ];
     }
 }

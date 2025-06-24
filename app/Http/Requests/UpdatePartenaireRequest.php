@@ -51,8 +51,16 @@ class UpdatePartenaireRequest extends FormRequest
             'structure_partenaire_id' => 'required|exists:structure_partenaires,id', //
             'statut_id' => 'required|exists:statut_partenaires,id', //
 
+            'nom_contact' => 'nullable|string|max:255',
+            'prenom_contact' => 'nullable|string|max:255',
+            'email_contact' => 'nullable|email|max:255',
+            'telephone_contact' => 'nullable|string|max:30',
+            'poste_contact' => 'nullable|string|max:255',
+            'adresse_contact' => 'nullable|string',
+
             // Note: Normalement, la mise à jour des personnes de contact se fait via un endpoint dédié
             // pour éviter la complexité. Nous n'incluons donc pas les champs 'contact_*' ici.
+
         ];
     }
 }

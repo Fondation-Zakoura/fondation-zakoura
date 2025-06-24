@@ -15,6 +15,8 @@ return new class extends Migration
             $table->string('poste'); // 
             $table->string('email')->unique();
             $table->string('telephone');
+            $table->string('adresse')->nullable();
+
             $table->timestamps();
         });
     }

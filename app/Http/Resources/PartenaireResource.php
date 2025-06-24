@@ -21,7 +21,9 @@ class PartenaireResource extends JsonResource
             'note' => $this->note,
             'logo_url' => $this->logo_partenaire ? asset('storage/' . $this->logo_partenaire) : null,
             'cree_le' => $this->created_at->format('d/m/Y H:i'),
-
+            'type_partenaire' => $this->type_partenaire,
+            'cree_par_id'     => $this->cree_par_id,
+            // 'cree_par' => new UserResource($this->creePar),
             // Charger les noms depuis les relations
             'nature_partenaire' => $this->whenLoaded('naturePartenaire', $this->naturePartenaire->nom),
             'structure_partenaire' => $this->whenLoaded('structurePartenaire', $this->structurePartenaire->nom),
