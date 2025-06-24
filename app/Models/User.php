@@ -41,6 +41,8 @@ class User extends Authenticatable implements JWTSubject
 // Implémentation de JWTSubject
     public function getJWTIdentifier()
     {
+
+        
         return $this->getKey();
     }
 
