@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\OptionsController;
+use App\Http\Controllers\Api\PartenaireController;
 use App\Http\Controllers\Category;
 use App\Http\Controllers\Product;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +22,13 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/categories', [Category::class, 'store']);
     Route::post('/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
     Route::post('/reset', [ResetPasswordController::class, 'reset']);
+
+     Route::get('options/natures-partenaires', [OptionsController::class, 'natures']);
+    Route::get('options/structures-partenaires', [OptionsController::class, 'structures']);
+    Route::get('options/statuts-partenaires', [OptionsController::class, 'statuts']);
+
+     Route::delete('partenaires', [PartenaireController::class, 'bulkDelete']);
+
+    // Routes CRUD classiques pour les partenaires
+    Route::apiResource('partenaires', PartenaireController::class);
 });
