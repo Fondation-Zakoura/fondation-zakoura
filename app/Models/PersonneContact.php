@@ -2,21 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class PersonneContact extends Model
 {
-    protected $fillable = [
-        'nom',
-        'prenom',
-        'email',
-        'telephone',
-        'partenaire_id',
-    ];
+    use HasFactory;
+
+    /**
+     * Le nom de la table associée au modèle.
+     *
+     * @var string
+     */
+    protected $table = 'personnes_contact'; // Ajoutez cette ligne
+
+    protected $fillable = ['partenaire_id', 'nom', 'prenom', 'poste', 'email', 'telephone'];
 
     public function partenaire()
     {
         return $this->belongsTo(Partenaire::class);
     }
-    
 }

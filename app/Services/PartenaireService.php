@@ -14,7 +14,12 @@ class PartenaireService
      */
     public function getAllPartenaires(array $filters)
     {
-        $query = Partenaire::query()->with('personnesContact');
+        $query = Partenaire::query()->with([
+            'personnesContact', 
+        'naturePartenaire', 
+        'structurePartenaire', 
+        'statut'
+        ]);
 
         // Application des filtres prévus dans la user story
         $query->when($filters['nom_partenaire'] ?? null, function ($q, $nom) {
@@ -33,7 +38,7 @@ class PartenaireService
             return $q->where('statut', $statut);
         });
 
-        return $query->latest()->paginate(15);
+        return $query->latest()->paginate(10);
     }
 
     /**

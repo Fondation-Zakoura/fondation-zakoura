@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\Api\OptionsController;
-use App\Http\Controllers\Api\PartenaireController;
+use App\Http\Controllers\NaturePartenaireController;
+use App\Http\Controllers\OptionsController;
+use App\Http\Controllers\PartenaireController;
+use App\Http\Controllers\StatutPartenaireController;
+use App\Http\Controllers\StructurePartenaireController;
 use App\Http\Controllers\Category;
 use App\Http\Controllers\Product;
 use Illuminate\Support\Facades\Route;
@@ -27,8 +30,20 @@ Route::middleware('auth:api')->group(function () {
     Route::get('options/structures-partenaires', [OptionsController::class, 'structures']);
     Route::get('options/statuts-partenaires', [OptionsController::class, 'statuts']);
 
+     Route::apiResource('natures-partenaires', NaturePartenaireController::class);
+    Route::apiResource('structures-partenaires', StructurePartenaireController::class);
+    Route::apiResource('statuts-partenaires', StatutPartenaireController::class);
      Route::delete('partenaires', [PartenaireController::class, 'bulkDelete']);
 
     // Routes CRUD classiques pour les partenaires
-    Route::apiResource('partenaires', PartenaireController::class);
 });
+
+ Route::get('options/natures-partenaires', [OptionsController::class, 'natures']);
+    Route::get('options/structures-partenaires', [OptionsController::class, 'structures']);
+    Route::get('options/statuts-partenaires', [OptionsController::class, 'statuts']);
+
+     Route::apiResource('natures-partenaires', NaturePartenaireController::class);
+    Route::apiResource('structures-partenaires', StructurePartenaireController::class);
+    Route::apiResource('statuts-partenaires', StatutPartenaireController::class);
+     Route::delete('partenaires', [PartenaireController::class, 'bulkDelete']);
+    Route::apiResource('partenaires', PartenaireController::class);
