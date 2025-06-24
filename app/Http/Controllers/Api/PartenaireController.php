@@ -9,6 +9,7 @@ use App\Http\Resources\PartenaireResource;
 use App\Models\Partenaire;
 use App\Services\PartenaireService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PartenaireController extends Controller
 {
@@ -43,6 +44,21 @@ class PartenaireController extends Controller
     public function update(UpdatePartenaireRequest $request, Partenaire $partenaire)
     {
         $partenaire = $this->partenaireService->updatePartenaire($partenaire, $request->validated());
+        $data = $request->validated();
+
+    // Vérifier si un nouveau logo a été envoyé
+    if ($request->hasFile('logo_partenaire')) {
+        // Supprimer l'ancien logo s'il existe, pour éviter les fichiers orphelins
+        if ($partenaire->logo_partenaire) {
+            Storage::disk('public')->delete($partenaire->logo_partenaire);
+        }
+
+        // Stocker le nouveau logo et mettre à jour le chemin dans les données à sauvegarder
+        $data['logo_partenaire'] = $request->file('logo_partenaire')->store('logos', 'public');
+    }
+
+    // Appeler le service pour effectuer la mise à jour
+    $partenaire = $this->partenaireService->updatePartenaire($partenaire, $data);
         return new PartenaireResource($partenaire->load(['naturePartenaire', 'structurePartenaire', 'statut']));
     }
 

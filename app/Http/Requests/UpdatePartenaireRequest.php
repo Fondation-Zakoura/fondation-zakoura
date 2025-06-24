@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePartenaireRequest extends FormRequest
 {
@@ -11,9 +12,8 @@ class UpdatePartenaireRequest extends FormRequest
      */
     public function authorize(): bool
     {
+        // La logique d'autorisation est gérée par le middleware `auth:sanctum`
         return true;
-
-    
     }
 
     /**
@@ -23,26 +23,36 @@ class UpdatePartenaireRequest extends FormRequest
      */
     public function rules(): array
     {
+        // On récupère l'ID du partenaire depuis la route (ex: /api/partenaires/{partenaire})
+        // Laravel injecte automatiquement le modèle 'partenaire' dans la requête.
+        $partenaireId = $this->route('partenaire')->id;
+
         return [
-            'nom_partenaire' => 'required|string|max:255', // 
-            'abreviation' => 'required|string|max:5', // 
-            'telephone' => 'nullable|string|max:20',
-            'email' => 'nullable|email|max:255',
-            'nature_partenaire' => 'required|in:Organisation non gouvernementale,Institution publique,Individu',
-            'type_partenaire' => 'required|in:National,International',
-            'structure_partenaire' => 'required|in:Publique,Privée,Associative,Coopérative',
-            'statut' => 'required|in:Prospection,En discussion,Convention signée,Contrat actif,Archivé',
-            'actions' => 'nullable|string',
-            'adresse' => 'nullable|string',
-            'pays' => 'nullable|string|max:255',
-            'note' => 'nullable|string',
-            'logo_partenaire' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048', // 
-            // Validation pour la personne de contact
-            'contact_nom' => 'required|string|max:255', // 
-            'contact_prenom' => 'required|string|max:255', // 
-            'contact_poste' => 'required|string|max:255', // 
-            'contact_email' => 'required|email|max:255',
-            'contact_telephone' => 'required|string|max:20',
+            // --- Champs de l'objet Partenaire ---
+            
+            // Le nom doit être unique, SAUF pour l'enregistrement que nous mettons à jour.
+            'nom_partenaire' => ['required', 'string', 'max:255', Rule::unique('partenaires')->ignore($partenaireId)], //
+            
+            'abreviation' => 'required|string|max:5', //
+            'telephone' => 'nullable|string|max:30',
+            
+            // L'email doit être unique, SAUF pour l'enregistrement actuel.
+            'email' => ['nullable', 'email', 'max:255', Rule::unique('partenaires')->ignore($partenaireId)],
+            
+            'actions' => 'nullable|string', //
+            'adresse' => 'nullable|string', //
+            'pays' => 'required|string|max:255', //
+            'note' => 'nullable|string', //
+            'logo_partenaire' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:2048', //
+
+            // --- Clés étrangères ---
+            'nature_partenaire_id' => 'required|exists:nature_partenaires,id', //
+            'type_partenaire' => 'required|in:National,International', //
+            'structure_partenaire_id' => 'required|exists:structure_partenaires,id', //
+            'statut_id' => 'required|exists:statut_partenaires,id', //
+
+            // Note: Normalement, la mise à jour des personnes de contact se fait via un endpoint dédié
+            // pour éviter la complexité. Nous n'incluons donc pas les champs 'contact_*' ici.
         ];
     }
 }

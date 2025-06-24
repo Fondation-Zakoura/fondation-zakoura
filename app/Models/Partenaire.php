@@ -13,18 +13,18 @@ class Partenaire extends Model
     protected $fillable = [
         'nom_partenaire', 'abreviation', 'telephone', 'email', 'actions', 'adresse',
         'pays', 'note', 'logo_partenaire', 'cree_par_id',
-        'nature_partenaire_id', 'structure_partenaire_id', 'statut_id'
+        'nature_partenaire_id', 'structure_partenaire_id', 'statut_id','type_partenaire'
     ];
 
     // Définir les nouvelles relations
     public function naturePartenaire()
     {
-        return $this->belongsTo(NaturePartenaire::class);
+        return $this->belongsTo(NaturePartenaire::class , 'nature_partenaire_id');
     }
 
     public function structurePartenaire()
     {
-        return $this->belongsTo(StructurePartenaire::class);
+        return $this->belongsTo(StructurePartenaire::class, 'structure_partenaire_id');
     }
 
     public function statut()
