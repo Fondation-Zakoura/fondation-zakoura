@@ -35,3 +35,5 @@ Route::middleware('auth:api')->group(function () {
 
     Route::apiResource('partenaires', PartenaireController::class);
 });
+
+
