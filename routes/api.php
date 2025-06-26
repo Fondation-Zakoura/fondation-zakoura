@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\Api\Category;
 use App\Http\Controllers\Product;
-use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
