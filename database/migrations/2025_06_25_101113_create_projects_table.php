@@ -32,7 +32,7 @@ return new class extends Migration
             $table->foreign('created_by_id')->references('id')->on('users');
             $table->foreign('bank_account_id')->references('id')->on('bank_accounts');
             $table->foreign('responsible_id')->references('id')->on('users');
-            $table->foreign('project_type_id')->references('id')->on('project_types')->onDelete('');
+            $table->foreign('project_type_id')->references('id')->on('project_types');
             $table->foreign('project_status_id')->references('id')->on('project_statuses');
             $table->timestamps();
 
