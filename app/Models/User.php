@@ -41,6 +41,8 @@ class User extends Authenticatable implements JWTSubject
 // Implémentation de JWTSubject
     public function getJWTIdentifier()
     {
+
+        
         return $this->getKey();
     }
 
@@ -52,5 +54,10 @@ class User extends Authenticatable implements JWTSubject
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    public function partenaires()
+    {
+        return $this->hasMany(Partenaire::class);
     }
 }
