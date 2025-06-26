@@ -9,8 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Api\ProjectTypeController;
 use App\Http\Controllers\Api\ProjectStatusController;
 use App\Http\Controllers\Api\ProjectBankAccountController;
-
-
+use App\Http\Controllers\Api\ProjectController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
