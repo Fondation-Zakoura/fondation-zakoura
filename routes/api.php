@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Product;
 use App\Http\Controllers\Api\Category;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Product;
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\ProjectTypeController;
+use App\Http\Controllers\Api\ProjectStatusController;
+use App\Http\Controllers\Api\ProjectBankAccountController;
+use App\Http\Controllers\Api\ProjectController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -23,3 +26,9 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/forgot', [ForgotPasswordController::class, 'sendResetLinkEmail']);
     Route::post('/reset', [ResetPasswordController::class, 'reset']);
 });
+
+Route::apiResource('projects', ProjectController::class);
+Route::apiResource('project-types', ProjectTypeController::class);
+Route::apiResource('project-statuses', ProjectStatusController::class);
+Route::apiResource('project-bank-accounts', ProjectBankAccountController::class);
+Route::delete('projects/bulk-delete', [ProjectController::class, 'bulkDestroy']);

@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-namespace App\Repositories;
 
 use App\Models\Category;
 use Illuminate\Pagination\LengthAwarePaginator;
