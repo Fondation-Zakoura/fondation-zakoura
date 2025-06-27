@@ -37,7 +37,7 @@ class UpdateProjectRequest extends FormRequest
             'responsible_id' => 'required|exists:users,id',
             'total_budget' => 'required|numeric|min:0',
             'zakoura_contribution' => 'nullable|numeric|min:0',
-            'bank_account_id' => 'required|exists:bank_accounts,id',
+            'project_bank_account_id' => 'required|exists:project_bank_accounts,id',
             'notes' => 'nullable|string',
         ];
     }

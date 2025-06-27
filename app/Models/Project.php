@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use App\Observers\ProjectObserver;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Facades\Auth as AuthFacade;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 #[ObservedBy([ProjectObserver::class])]
 class Project extends Model
@@ -34,7 +31,7 @@ class Project extends Model
         'total_budget',
         'zakoura_contribution',
         'notes',
-        'bank_account_id',
+        'project_bank_account_id',
         'project_code'
     ];
 
@@ -69,8 +66,8 @@ class Project extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function bankAccount(){
-        return $this->belongsTo(BankAccount::class);
+    public function projectBankAccount(){
+        return $this->belongsTo(ProjectBankAccount::class);
     }
 
     /**
